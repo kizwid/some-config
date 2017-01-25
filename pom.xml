@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+	<groupId>sandkev</groupId>
+	<version>0.0.1-SNAPSHOT</version>
+
+    <artifactId>config</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <someLogProperty>ABC</someLogProperty>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>dev1</id>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>${project.basedir}/src/main/assembly/root/env/dev1/app.properties</filter>
+                                <!--<filter>${project.basedir}/src/main/assembly/root/config-version.properties</filter>-->
+                                <filter>${project.basedir}/src/main/resources/shared.properties</filter>
+                            </filters>
+                            <!--<finalName>${project.artifactId}-production-${version}</finalName>-->
+                            <ignoreDirFormatExtensions>true</ignoreDirFormatExtensions>
+                            <descriptors>
+                                <descriptor>${basedir}/src/main/assembly/dev1-assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <phase>package</phase>
+                    </execution>
+                    <execution>
+                        <id>qa1</id>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>${project.basedir}/src/main/assembly/root/env/qa1/app.properties</filter>
+                            </filters>
+                            <!--<finalName>${project.artifactId}-production-${version}</finalName>-->
+                            <ignoreDirFormatExtensions>true</ignoreDirFormatExtensions>
+                            <descriptors>
+                                <descriptor>${basedir}/src/main/assembly/qa1-assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <phase>package</phase>
+                    </execution>
+                    <execution>
+                        <id>uat1</id>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <filters>
+                                <filter>${project.basedir}/src/main/assembly/root/env/uat1/app.properties</filter>
+                            </filters>
+                            <!--<finalName>${project.artifactId}-production-${version}</finalName>-->
+                            <ignoreDirFormatExtensions>true</ignoreDirFormatExtensions>
+                            <descriptors>
+                                <descriptor>${basedir}/src/main/assembly/uat1-assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                        <phase>package</phase>
+                    </execution>
+<!--
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                    </execution>
+-->
+                </executions>
+                <configuration>
+                    <appendAssemblyId>true</appendAssemblyId>
+<!--
+                    <descriptors>
+                        <descriptor>${basedir}/src/main/assembly/dev1-assembly.xml</descriptor>
+                        <descriptor>${basedir}/src/main/assembly/qa1-assembly.xml</descriptor>
+                        <descriptor>${basedir}/src/main/assembly/uat1-assembly.xml</descriptor>
+                    </descriptors>
+-->
+                    <ignoreDirFormatExtensions>false</ignoreDirFormatExtensions>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.groovy.maven</groupId>
+                <artifactId>gmaven-plugin</artifactId>
+                <version>1.0</version>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

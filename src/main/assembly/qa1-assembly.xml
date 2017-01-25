@@ -1,0 +1,23 @@
+<assembly>
+    <id>qa1</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <baseDirectory>${project.version}</baseDirectory>
+    <componentDescriptors>
+        <componentDescriptor>${basedir}/src/main/assembly/shared-component.xml</componentDescriptor>
+    </componentDescriptors>
+    <fileSets>
+        <!-- add env specific config-->
+        <fileSet>
+            <directory>${basedir}/src/main/assembly/root/env/qa1</directory>
+            <outputDirectory>conf</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0444</fileMode>
+            <excludes>
+                <exclude>config-version.properties</exclude>
+                <exclude>log4j.xml</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>
