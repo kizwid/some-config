@@ -1,43 +1,13 @@
 <component>
-    <files>
-        <!--add the current build version properties-->
-        <file>
-            <source>${basedir}/src/main/assembly/root/config-version.properties</source>
-            <outputDirectory>conf</outputDirectory>
-            <filtered>true</filtered>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0444</fileMode>
-        </file>
-<!--
-        <file>
-            <source>${basedir}/src/main/assembly/root/log4j.xml</source>
-            <outputDirectory>conf</outputDirectory>
-            <filtered>true</filtered>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0444</fileMode>
-        </file>
--->
-    </files>
     <fileSets>
         <!-- all resources are copied to conf-->
-<!--
-        <fileSet>
-            <directory>${basedir}/src/main/resources</directory>
-            <outputDirectory>conf</outputDirectory>
-            <lineEnding>unix</lineEnding>
-            <fileMode>0444</fileMode>
-            <excludes>
-                <exclude>config-version.properties</exclude>
-                <exclude>log4j.xml</exclude>
-            </excludes>
-        </fileSet>
--->
         <fileSet>
             <filtered>true</filtered>
             <directory>${basedir}/src/main/resources</directory>
             <outputDirectory>conf</outputDirectory>
             <lineEnding>unix</lineEnding>
             <fileMode>0444</fileMode>
+            <directoryMode>0444</directoryMode>
         </fileSet>
     </fileSets>
 </component>

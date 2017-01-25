@@ -1,4 +1,6 @@
-<assembly>
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
     <id>uat1</id>
     <formats>
         <format>tar.gz</format>
@@ -10,14 +12,10 @@
     <fileSets>
         <!-- add env specific config-->
         <fileSet>
-            <directory>${basedir}/src/main/assembly/root/env/uat1</directory>
+            <directory>${basedir}/src/main/assembly/uat1</directory>
             <outputDirectory>conf</outputDirectory>
             <lineEnding>unix</lineEnding>
             <fileMode>0444</fileMode>
-            <excludes>
-                <exclude>config-version.properties</exclude>
-                <exclude>log4j.xml</exclude>
-            </excludes>
         </fileSet>
     </fileSets>
 </assembly>

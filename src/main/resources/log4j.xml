@@ -16,6 +16,5 @@
 	<!--${someLogProperty}-->
 	<!--JMX_PORT: ${JMX_PORT}-->
 	<!--Build.Version: ${Build.Version}-->
-	<!--foo: ${foo}-->
 
 </log4j:configuration>
